@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Login from './Login.js';
+import AuthService from './utils/AuthService.js';
+
+console.log(`${JSON.stringify(process.env)}`);
+const auth = new AuthService(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN);
 
 class App extends Component {
   render() {
@@ -13,6 +18,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Login auth={auth} />
       </div>
     );
   }
