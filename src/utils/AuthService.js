@@ -12,6 +12,7 @@ export default class AuthService {
 
   _doAuthentication(authResult){
     // Saves the user token
+    console.log(`${JSON.stringify(authResult)}`);
     this.setToken(authResult.idToken)
   }
 
