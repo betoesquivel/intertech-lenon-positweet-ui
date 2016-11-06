@@ -48,6 +48,7 @@ class App extends Component {
                     screen_name: reply.screen_name
                   });
                   window.cb = cb;
+                  window.location = "https://positweets.surge.sh/"
               }
           );
         } else {
@@ -65,7 +66,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <p className="App-intro">
-          Donate your social reach in Twitter to improve positivity around LGBT
+          Donate your social reach in Twitter to improve positivity around LGBT+
         </p>
         <Login {...this.props} />
       </div>
