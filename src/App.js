@@ -40,6 +40,7 @@ class App extends Component {
               },
               function (reply) {
                   cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                  console.log(`Done: ${JSON.stringify(reply)}`);
                   window.cb = cb;
 
                   // if you need to persist the login after page reload,
