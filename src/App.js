@@ -25,7 +25,7 @@ class App extends Component {
     }
 
     if (typeof parameters.oauth_verifier !== "undefined") {
-        console.log(`Got parameters saved: ${JSON.stringify(parameters)}`);
+        console.log(`Came from a callback with: ${JSON.stringify(parameters)}`);
         let cb = new window.Codebird();
         cb.setConsumerKey(process.env.REACT_APP_CONSUMER_KEY, process.env.REACT_APP_CONSUMER_SECRET);
         if (typeof Storage !== 'undefined') {
@@ -42,9 +42,6 @@ class App extends Component {
                   cb.setToken(reply.oauth_token, reply.oauth_token_secret);
                   console.log(`Done: ${JSON.stringify(reply)}`);
                   window.cb = cb;
-
-                  // if you need to persist the login after page reload,
-                  // consider storing the token in a cookie or HTML5 local storage
               }
           );
         } else {
