@@ -45,7 +45,7 @@ class App extends Component {
                     screen_name: reply.screen_name
                   });
                   window.cb = cb;
-                  window.location = "https://positweets.surge.sh/"
+                  window.location = "https://positweet-ebff4.firebaseapp.com/?#"
               }
           );
         } else {
