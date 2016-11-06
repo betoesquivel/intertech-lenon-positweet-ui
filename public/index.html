@@ -15,18 +15,20 @@
     -->
     <title>Positweets</title>
     <script src="codebird.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAl8K7u2_BBGZdwLaG20YWnvv8MVho7g9M",
+        authDomain: "positweet-888d8.firebaseapp.com",
+        databaseURL: "https://positweet-888d8.firebaseio.com",
+        storageBucket: "positweet-888d8.appspot.com",
+        messagingSenderId: "332228095424"
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
-    -->
   </body>
 </html>
