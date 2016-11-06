@@ -2,11 +2,56 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Login from './Login.js';
-import AuthService from './utils/AuthService.js';
 
-const auth = new AuthService(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN);
+//const auth = new AuthService(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN);
 
 class App extends Component {
+  constructor() {
+    super();
+    const current_url = typeof location !== 'undefined' ? location.toString() : '';
+    const queryMatch  = current_url.match(/\?(.+)$/);
+    window.queryMatch = queryMatch;
+    const query = queryMatch !== null ? queryMatch[queryMatch.length-1].split("&") : '';
+    window.query = query;
+    let parameters  = {};
+    let parameter;
+
+    for (var i = 0; i < query.length; i++) {
+        parameter = query[i].split("=");
+        if (parameter.length === 1) {
+            parameter[1] = "";
+        }
+        parameters[decodeURIComponent(parameter[0])] = decodeURIComponent(parameter[1]);
+    }
+
+    if (typeof parameters.oauth_verifier !== "undefined") {
+        console.log(`Got parameters saved: ${JSON.stringify(parameters)}`);
+        let cb = new window.Codebird();
+        cb.setConsumerKey(process.env.REACT_APP_CONSUMER_KEY, process.env.REACT_APP_CONSUMER_SECRET);
+        if (typeof Storage !== 'undefined') {
+          cb.setToken(
+            localStorage.getItem('oauth_token'),
+            localStorage.getItem('oauth_token_secret')
+          );
+          cb.__call(
+              "oauth_accessToken",
+              {
+                  oauth_verifier: parameters.oauth_verifier
+              },
+              function (reply) {
+                  cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                  window.cb = cb;
+
+                  // if you need to persist the login after page reload,
+                  // consider storing the token in a cookie or HTML5 local storage
+              }
+          );
+        } else {
+          console.log("ERROR: No local storage support");
+        }
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -17,7 +62,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Login auth={auth} />
+        <Login {...this.props} />
       </div>
     );
   }
