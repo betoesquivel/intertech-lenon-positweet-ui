@@ -8,9 +8,10 @@ export class Login extends React.Component {
     cb.setConsumerKey(process.env.REACT_APP_CONSUMER_KEY, process.env.REACT_APP_CONSUMER_SECRET);
     window.cb = cb;
     console.log(`Sending request with: ${JSON.stringify({secret: cb._oauth_consumer_secret, access: cb._oauth_consumer_key})}`);
+    let callback = process.env.NODE_ENV === 'development' ?  "http://beto.dev:3000" : "https://positweet.herokuapp.com";
     cb.__call(
       "oauth_requestToken",
-      {oauth_callback: "https://positweet.herokuapp.com"},
+      {oauth_callback: callback},
       function (reply) {
         console.log(`Got back: ${JSON.stringify(reply)}`);
         // stores it
@@ -36,11 +37,14 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <div className={styles.root}>
-        <h2>Login</h2>
-        <ButtonToolbar className={styles.toolbar}>
-          <Button bsStyle="primary" onClick={() => this.authorize(this.props.cb)}>Login</Button>
-        </ButtonToolbar>
+      <div className={Object.assign({}, styles.root)}>
+        <div className="row">
+          <div className="col-md-4 col-md-offset-3">
+            <ButtonToolbar className={styles.toolbar}>
+              <Button bsStyle="primary" bsSize="large" onClick={() => this.authorize(this.props.cb)}>Login</Button>
+            </ButtonToolbar>
+          </div>
+        </div>
       </div>
     )
   }
