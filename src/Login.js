@@ -10,7 +10,7 @@ export class Login extends React.Component {
     console.log(`Sending request with: ${JSON.stringify({secret: cb._oauth_consumer_secret, access: cb._oauth_consumer_key})}`);
     cb.__call(
       "oauth_requestToken",
-      {oauth_callback: "http://positweet.herokuapp.com"},
+      {oauth_callback: "https://positweet.herokuapp.com"},
       function (reply) {
         console.log(`Got back: ${JSON.stringify(reply)}`);
         // stores it
