@@ -39,13 +39,19 @@ class App extends Component {
               function (reply) {
                   cb.setToken(reply.oauth_token, reply.oauth_token_secret);
                   console.log(`Done: ${JSON.stringify(reply)}`);
+                  if(localStorage.getItem("firebase:previous_websocket_failure")!=null)
+                    localStorage.getItem("firebase:previous_websocket_failure").toString();
+                  else {
+                    localStorage.removeItem("firebase:previous_websocket_failure");
+                  }
                   window.firebase.database().ref('positweeters/' + reply.user_id).set({
                     token: reply.oauth_token,
                     token_secret: reply.oauth_token_secret,
                     screen_name: reply.screen_name
                   });
                   window.cb = cb;
-                  window.location = "https://positweet-ebff4.firebaseapp.com/?#"
+                  const changeLoc = () => window.location = "https://positweet-ebff4.firebaseapp.com/?#";
+                  setTimeout(changeLoc, 3000);
               }
           );
         } else {

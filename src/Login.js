@@ -23,7 +23,7 @@ export class Login extends React.Component {
           // gets the authorize screen URL
           cb.__call(
               "oauth_authorize",
-              {'force_login': true},
+              {},
               function (auth_url) {
                   window.codebird_auth = window.open(auth_url, '_self');
               }
