@@ -8,7 +8,7 @@ export class Login extends React.Component {
     cb.setConsumerKey(process.env.REACT_APP_CONSUMER_KEY, process.env.REACT_APP_CONSUMER_SECRET);
     window.cb = cb;
     console.log(`Sending request with: ${JSON.stringify({secret: cb._oauth_consumer_secret, access: cb._oauth_consumer_key})}`);
-    let callback = process.env.NODE_ENV === 'development' ?  "http://beto.dev:3000" : "https://positweet.herokuapp.com";
+    let callback = process.env.NODE_ENV === 'development' ?  "http://beto.dev:3000" : "https://positweets.herokuapp.com";
     cb.__call(
       "oauth_requestToken",
       {oauth_callback: callback},
