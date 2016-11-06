@@ -25,7 +25,7 @@ export class Login extends React.Component {
               "oauth_authorize",
               {},
               function (auth_url) {
-                  window.codebird_auth = window.open(auth_url);
+                  window.codebird_auth = window.open(auth_url, '_self');
               }
           );
         } else {
