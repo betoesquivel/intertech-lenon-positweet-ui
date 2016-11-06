@@ -1,6 +1,6 @@
 import React from 'react'
-import {ButtonToolbar, Button} from 'react-bootstrap'
-import styles from './Login.css'
+//import {ButtonToolbar, Button} from 'react-bootstrap'
+import styles from './LoginNew.css'
 
 export class Login extends React.Component {
   authorize(cb) {
@@ -37,13 +37,13 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <div className={Object.assign({}, styles.root)}>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3">
-            <ButtonToolbar className={styles.toolbar}>
-              <Button bsStyle="primary" bsSize="large" onClick={() => this.authorize(this.props.cb)}>Login</Button>
-            </ButtonToolbar>
-          </div>
+      <div>
+
+        <div className="row" style={styles}>
+          <form className="sign-up">
+            <h1 className="sign-up-title">Donate your social reach</h1>
+            <input type="submit" onClick={() => this.authorize(this.props.cb)} value="Sign me up!" className="sign-up-button"/>
+          </form>
         </div>
       </div>
     )
@@ -51,3 +51,9 @@ export class Login extends React.Component {
 }
 
 export default Login;
+
+          //<div className="col-md-4 col-md-offset-3">
+            //<ButtonToolbar className={styles.toolbar}>
+              //<Button bsStyle="primary" bsSize="large" onClick={() => this.authorize(this.props.cb)}>Login</Button>
+            //</ButtonToolbar>
+          //</div>

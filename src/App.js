@@ -56,17 +56,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App container ">
-      <div className="row">
+      <div className="App" style={{display:'flex', flexDirection:'column', justifyContent:'space-between', height: '100%'}}>
         <div className="App-header">
-          Welcome
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <p className="App-intro">
-          Donate your social reach in Twitter to improve positivity around LGBT+
-        </p>
-        <Login {...this.props} />
-      </div>
+        <div className="container">
+          <div className="row">
+            <Login {...this.props} />
+          </div>
+        </div>
       </div>
     );
   }
