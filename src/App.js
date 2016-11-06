@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import Login from './Login.js';
-import Dash from './Dash.js';
-
-//const auth = new AuthService(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN);
 
 class App extends Component {
   constructor() {
