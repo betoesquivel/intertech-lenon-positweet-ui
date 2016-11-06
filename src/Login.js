@@ -42,7 +42,7 @@ export class Login extends React.Component {
         <div className="row" style={styles}>
           <form className="sign-up">
             <h1 className="sign-up-title">Donate your social reach</h1>
-            <input type="submit" onClick={() => this.authorize(this.props.cb)} value="Sign me up!" className="sign-up-button"/>
+            <input type="button" onClick={() => this.authorize(this.props.cb)} value="Sign me up!" className="sign-up-button"/>
           </form>
         </div>
       </div>
